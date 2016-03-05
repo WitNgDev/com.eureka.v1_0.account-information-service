@@ -65,6 +65,8 @@ public class AccountInformationApiServiceImpl implements AccountInformationApiSe
                     CreateAccountResponse createAccountResponse = new CreateAccountResponse();
                     createAccountResponse.setAccount(this.accountService.getByName(createAccountRequest.getAccountName()));
                     return createAccountResponse;
+                } else {
+                    throw new AccountInformationApiException("Cannot complete this process .. Please try again");
                 }
             }
         }
@@ -96,6 +98,8 @@ public class AccountInformationApiServiceImpl implements AccountInformationApiSe
                 ResetPasswordResponse resetPasswordResponse = new ResetPasswordResponse();
                 resetPasswordResponse.setResetPassword(persistedResetPassword);
                 return resetPasswordResponse;
+            } else {
+                throw new AccountInformationApiException("Cannot complete this process .. Please try again");
             }
         }
         throw new AccountInformationApiException("Failed to reset password .. Please try again later.");
@@ -114,6 +118,8 @@ public class AccountInformationApiServiceImpl implements AccountInformationApiSe
                 LoginResponse loginResponse = new LoginResponse();
                 loginResponse.setLogin(persistedLogin);
                 return loginResponse;
+            } else {
+                throw new AccountInformationApiException("Cannot complete this process .. Please try again");
             }
         }
         throw new AccountInformationApiException("Failed to login .. Please try again later.");
@@ -127,6 +133,8 @@ public class AccountInformationApiServiceImpl implements AccountInformationApiSe
                 GetAccountResponse getAccountResponse = new GetAccountResponse();
                 getAccountResponse.setAccount(persistedAccount);
                 return getAccountResponse;
+            } else {
+                throw new AccountInformationApiException("Cannot complete this process .. Please try again");
             }
         }
         throw new AccountInformationApiException("Failed to get account details .. Please try again later.");
